@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
 	fetchAsyncMovieOrShowDetail,
-	getSelectedMovieOrShow,
+	getSelectedMovieOrShow, removeSelectedMovieOrShow
 } from "../../features/movies/movieSlice";
 import './movieDetail.styles.scss'
 
@@ -14,10 +14,17 @@ const MovieDetail = () => {
 
 	useEffect(() => {
 		dispatch(fetchAsyncMovieOrShowDetail(imdbID));
+    return () => {
+      dispatch(removeSelectedMovieOrShow())
+    }
 	}, [dispatch, imdbID]);
 
 	return (
 		<div className="movie-section" >
+      {Object.keys(data).length === 0 ? (
+        <div><h1>...LOADING</h1></div>
+      ) : (
+      <>
 			<div className="section-left">
 				<div className="movie-title">{data.Title}</div>
 				<div className="movie-rating">
@@ -65,6 +72,8 @@ const MovieDetail = () => {
       <div className="section-right">
         <img src={data.Poster} alt={data.Title} />
       </div>
+      </>
+      )}
 		</div>
 	);
 };

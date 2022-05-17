@@ -37,12 +37,12 @@ const movieSlice = createSlice({
 	name: "movies",
 	initialState,
 	reducers: {
-		addMovies: (state, { payload }) => {
-			state.movies = payload;
-		},
-		addShows: (state, { payload }) => {
-			state.series = payload;
-		},
+		// addMovies: (state, { payload }) => {
+		// 	state.movies = payload;
+		// }, Said to now  be part of fetchAsyncMovies, but how??
+		removeSelectedMovieOrShow: (state) => {
+			state.selectedMovieOrShow = {}
+		}
 	},
 	extraReducers: {
 		[fetchAsyncMovies.pending]: () => {
@@ -66,7 +66,7 @@ const movieSlice = createSlice({
 	},
 });
 
-export const {addMovies} = movieSlice.actions
+export const {removeSelectedMovieOrShow} = movieSlice.actions
 export const getAllMovies = (state) => state.movies.movies
 export const getAllShows = (state) => state.movies.shows
 export const getSelectedMovieOrShow = (state) => state.movies.selectedMovieOrShow
