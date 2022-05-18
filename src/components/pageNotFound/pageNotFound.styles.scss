@@ -1,0 +1,11 @@
+@import "../../common/colors.syles.scss";
+
+.pageNotFound {
+	color: $font-primary;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 200px;
+  margin-top: 200px;
+}
