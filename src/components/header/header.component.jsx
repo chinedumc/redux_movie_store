@@ -21,7 +21,7 @@ const Header = () => {
 	};
 
 	return (
-		<div className="header">
+		<div className="headers">
 			<div className="logo">
 				<Link to="/">MovieApp</Link>
 			</div>
