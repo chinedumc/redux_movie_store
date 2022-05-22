@@ -28,7 +28,8 @@ export const fetchAsyncMovieOrShowDetail = createAsyncThunk(
 const initialState = {
 	movies: {},
 	shows: {},
-	selectedMovieOrShow: {}
+	selectedMovieOrShow: {},
+	loading: false
 };
 
 const movieSlice = createSlice({
@@ -44,6 +45,7 @@ const movieSlice = createSlice({
 	},
 	extraReducers: {
 		[fetchAsyncMovies.pending]: () => {
+			// {loading && <Loading /> 
 			console.log("Pending");
 		},
 		[fetchAsyncMovies.fulfilled]: (state, { payload }) => {
